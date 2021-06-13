@@ -4,7 +4,7 @@ services:
     api:
         restart: unless-stopped
         container_name: htmlrender-api
-        image: htmlrender-api
+        image: froogo/htmlrender-api
         ports:
             - 8080:8080
         depends_on:
@@ -12,7 +12,7 @@ services:
     renderer:
         restart: unless-stopped
         container_name: htmlrender-renderer
-        image: htmlrender-renderer
+        image: froogo/htmlrender-renderer
         security_opt: 
             - seccomp=chrome.json
         depends_on:
