@@ -3,7 +3,6 @@ version: '3.8'
 services:
     api:
         restart: unless-stopped
-        container_name: htmlrender-api
         image: froogo/htmlrender-api
         ports:
             - 8080:8080
@@ -11,8 +10,10 @@ services:
             - rabbitmq
     renderer:
         restart: unless-stopped
-        container_name: htmlrender-renderer
         image: froogo/htmlrender-renderer
+        deploy:
+            mode: replicated
+            replicas: 3
         security_opt: 
             - seccomp=chrome.json
         depends_on:
